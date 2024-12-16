@@ -5,7 +5,7 @@ import uvicorn
 app = FastAPI()
 
 def get_db_connection():
-    return psycopg2.connect(database="hotel_inventory", user="postgres", password="@Was!2023", host="localhost", port="5432")
+    return psycopg2.connect(database="hotel_inventory", user="postgres", password="", host="localhost", port="5432")
 
 @app.post("/rooms")
 def create_room(room_number: int, room_type: str, status: str):

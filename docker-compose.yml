@@ -10,7 +10,7 @@ services:
     depends_on:
       - postgres
     environment:
-      - DATABASE_URL=postgresql://postgres:%40Was%212023@postgres:5432/hotel_soap
+      - DATABASE_URL=postgresql://postgres:pass@postgres:5432/hotel_soap
 
   rest-service:
     build:
@@ -21,7 +21,7 @@ services:
     depends_on:
       - postgres
     environment:
-      - DATABASE_URL=postgresql://postgres:%40Was%212023@postgres:5432/hotel_rest
+      - DATABASE_URL=postgresql://postgres:pass@postgres:5432/hotel_rest
 
   inventory-service:
     build:
@@ -32,7 +32,7 @@ services:
     depends_on:
       - postgres
     environment:
-      - DATABASE_URL=postgresql://postgres:%40Was%212023@postgres:5432/hotel_inventory
+      - DATABASE_URL=postgresql://postgres:pass@postgres:5432/hotel_inventory
 
   postgres:
     image: postgres:15
@@ -41,7 +41,7 @@ services:
       - "5432:5432"
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: "%40Was%212023"
+      POSTGRES_PASSWORD: "pass"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 

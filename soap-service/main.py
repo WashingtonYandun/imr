@@ -18,7 +18,7 @@ app.add_middleware(
 
 @app.post("/soap/availability")
 def check_availability(start_date: str, end_date: str, room_type: str):
-    connection = psycopg2.connect(database="hotelsoap", user="postgres", password="@Was!2023", host="localhost", port="5432")
+    connection = psycopg2.connect(database="hotel_soap", user="postgres", password="", host="localhost", port="5432")
     cursor = connection.cursor()
     query = """SELECT * FROM availability WHERE room_type=%s AND available_date BETWEEN %s AND %s"""
     cursor.execute(query, (room_type, start_date, end_date))

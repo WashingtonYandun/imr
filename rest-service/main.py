@@ -5,7 +5,7 @@ import uvicorn
 app = FastAPI()
 
 def get_db_connection():
-    return psycopg2.connect(database="hotel_rest", user="postgres", password="@Was!2023", host="localhost", port="5432")
+    return psycopg2.connect(database="hotel_rest", user="postgres", password="", host="localhost", port="5432")
 
 @app.post("/reservations")
 def create_reservation(customer_name: str, room_number: int, start_date: str, end_date: str):
