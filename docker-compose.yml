@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  soap-service:
+    build:
+      context: ./soap-service
+    container_name: soap-service
+    ports:
+      - "8001:8001"
+    depends_on:
+      - postgres
+    environment:
+      - DATABASE_URL=postgresql://postgres:%40Was%212023@postgres:5432/hotel_soap
+
+  rest-service:
+    build:
+      context: ./rest-service
+    container_name: rest-service
+    ports:
+      - "8002:8002"
+    depends_on:
+      - postgres
+    environment:
+      - DATABASE_URL=postgresql://postgres:%40Was%212023@postgres:5432/hotel_rest
+
+  inventory-service:
+    build:
+      context: ./inventory-service
+    container_name: inventory-service
+    ports:
+      - "8003:8003"
+    depends_on:
+      - postgres
+    environment:
+      - DATABASE_URL=postgresql://postgres:%40Was%212023@postgres:5432/hotel_inventory
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "%40Was%212023"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

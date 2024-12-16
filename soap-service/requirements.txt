@@ -1,0 +1,5 @@
+uvicorn[standard]
+fastapi==0.95.0
+psycopg2==2.9.6
+uvicorn==0.22.0
+zeep==4.1.0
